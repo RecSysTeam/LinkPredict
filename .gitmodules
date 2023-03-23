@@ -7,3 +7,6 @@
 [submodule "vaultes/brain"]
 	path = vaultes/brain
 	url = https://github.com/hannesdelbeke/brain.git
+[submodule "vaultes/Digital-Garden"]
+	path = vaultes/Digital-Garden
+	url = https://github.com/raphaelluethy/Digital-Garden
