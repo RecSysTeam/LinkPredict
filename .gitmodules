@@ -10,3 +10,9 @@
 [submodule "vaultes/Digital-Garden"]
 	path = vaultes/Digital-Garden
 	url = https://github.com/raphaelluethy/Digital-Garden
+[submodule "vaultes/vault"]
+	path = vaultes/vault
+	url = https://github.com/hashicorp/vault.git
+[submodule "vaultes/obsidian-hub"]
+	path = vaultes/obsidian-hub
+	url = https://github.com/obsidian-community/obsidian-hub
