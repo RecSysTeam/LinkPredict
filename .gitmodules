@@ -1,0 +1,6 @@
+[submodule "obsidiantools-demo"]
+	path = obsidiantools-demo
+	url = https://github.com/mfarragher/obsidiantools-demo
+[submodule "vaultes/DigitalGarden"]
+	path = vaultes/DigitalGarden
+	url = https://github.com/raphaelluethy/Digital-Garden
