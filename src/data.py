@@ -27,7 +27,7 @@ def delete_self_linking(graph: nx.Graph) -> nx.Graph:
     (self linking is bad for calculation adamic adar index, because of 1 /  log(degree(w)))
     """
 
-    graph_new = graph
+    graph_new = deepcopy(graph)
     edges = graph_new.edges
 
     for edge in edges:
