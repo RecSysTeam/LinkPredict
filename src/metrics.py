@@ -8,13 +8,13 @@ def recall_n(recs: pd.DataFrame, holdout_links: pd.DataFrame, topn: int = 5) -> 
     """
     Args:
         recs: pd.DataFrame
-        'note_id', 'links to'
+        'note_id', 'recomendations'
         id_1, [note_id_1, ..., note_id_n]
         id_1, [note_id_1, ..., note_id_k]
 
 
         holdout_links: pd.DataFrame
-        'note_id', 'links to'
+        'note_id', 'notes_to'
         id_1, [note_id_1, ..., note_id_n]
         id_2, [note_id_1, ..., note_id_k]
 
@@ -23,7 +23,7 @@ def recall_n(recs: pd.DataFrame, holdout_links: pd.DataFrame, topn: int = 5) -> 
     """
     recall = []
     for idx in recs.index:
-        r = recs["recomendation"][idx][:topn]
-        l = holdout_links[idx]
+        r = recs["recomendations"][idx][:topn]
+        l = holdout_links["notes_to"][idx]
         recall.append(len(set(r).intersection(l)) / len(l))
     return np.mean(recall)
