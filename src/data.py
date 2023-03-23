@@ -1,3 +1,4 @@
+from copy import deepcopy
 from pathlib import Path
 from typing import List, Optional, Tuple, Union
 
@@ -50,7 +51,7 @@ def holdout(
     if seed:
         np.random.seed(seed=seed)
 
-    modified_graph = graph
+    modified_graph = deepcopy(graph)
     edges = list(modified_graph.edges)
     n_edges = len(edges)
     delete_edges_idx = np.random.choice(
