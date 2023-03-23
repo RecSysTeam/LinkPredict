@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import Generator, Iterator, List, Tuple
 
 import networkx as nx
@@ -44,7 +45,9 @@ def generate_recomendations(
 def calculate_adamic_adar(
     graph: nx.Graph, pair_nodes: List[Tuple[str, str]]
 ) -> pd.DataFrame:
-    preds = nx.adamic_adar_index(nx.DiGraph(graph).to_undirected(), ebunch=pair_nodes)
+    graph_ = deepcopy(graph)
+
+    preds = nx.adamic_adar_index(nx.DiGraph(graph_).to_undirected(), ebunch=pair_nodes)
     scores = [(u, v, p) for u, v, p in preds]
     scores = pd.DataFrame.from_records(
         scores, columns=["node_from", "node_to", "adamic_adar_index"]
