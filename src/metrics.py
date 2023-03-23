@@ -4,9 +4,8 @@ import numpy as np
 import pandas as pd
 
 
-def recall_n(recs: pd.DataFrame, holdout_links: pd.DataFrame) -> float:
-    """[summary]
-
+def recall_n(recs: pd.DataFrame, holdout_links: pd.DataFrame, topn: int = 5) -> float:
+    """
     Args:
         recs: pd.DataFrame
         'note_id', 'links to'
@@ -24,7 +23,7 @@ def recall_n(recs: pd.DataFrame, holdout_links: pd.DataFrame) -> float:
     """
     recall = []
     for idx in recs.index:
-        r = recs[idx]
+        r = recs["recomendation"][idx][:topn]
         l = holdout_links[idx]
         recall.append(len(set(r).intersection(l)) / len(l))
     return np.mean(recall)
