@@ -1,6 +1,6 @@
 # LinkPredict
 
-## Instalation 
+## Instalation
 ```sh
 git clone --recursive https://github.com/RecSysTeam/LinkPredict.git
 ```
