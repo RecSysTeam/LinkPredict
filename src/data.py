@@ -37,7 +37,7 @@ def delete_self_linking(graph: nx.Graph) -> nx.Graph:
 
 
 def holdout(
-    graph: nx.Graph, alpha: float = 0.1, seed: Optional[int] = 42
+    graph: nx.Graph, alpha: float = 0.1, seed: Optional[int] = None
 ) -> Tuple[nx.Graph, List[Tuple[str, str]]]:
     """
     delete some links in Graph, and return them with modified graph
