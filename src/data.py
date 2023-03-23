@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List, Tuple, Union
+from typing import List, Optional, Tuple, Union
 
 import networkx as nx
 import numpy as np
@@ -37,17 +37,18 @@ def delete_self_linking(graph: nx.Graph) -> nx.Graph:
 
 
 def holdout(
-    graph: nx.Graph, alpha: float = 0.1, seed=42
+    graph: nx.Graph, alpha: float = 0.1, seed: Optional[int] = 42
 ) -> Tuple[nx.Graph, List[Tuple[str, str]]]:
     """
     delete some links in Graph, and return them with modified graph
     Args:
         graph: nx.Graph
-        alpha: percent of edges to delete frm graph
+        alpha: percent of edges to delete frm graph [0., 1.]
     Returns:
         modified_graph, edges
     """
-    np.random.seed(seed=seed)
+    if seed:
+        np.random.seed(seed=seed)
 
     modified_graph = graph
     edges = list(modified_graph.edges)
