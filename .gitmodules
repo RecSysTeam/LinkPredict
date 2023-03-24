@@ -16,3 +16,6 @@
 [submodule "vaultes/obsidian-hub"]
 	path = vaultes/obsidian-hub
 	url = https://github.com/obsidian-community/obsidian-hub
+[submodule "vaultes/obsidian-garden"]
+	path = vaultes/obsidian-garden
+	url = https://github.com/tanepiper/obsidian-garden
