@@ -5,6 +5,9 @@ import networkx as nx
 import pandas as pd
 from tqdm import tqdm
 
+from src.data import holdout
+from src.metrics import recall_n
+
 
 def create_pairs_for_nodes(
     nodes: List[str],
@@ -58,3 +61,33 @@ def calculate_adamic_adar(
     )
     scores.set_index("node_from", inplace=True)
     return scores
+
+
+def evaluate_baseline(graph: nx.Graph, n_exp: int = 1000, alpha=0.1, topn: int = 5):
+
+    recall = []
+    for _ in tqdm(range(1000)):
+        train_graph, holdout_links = holdout(graph, seed=None, alpha=0.1)
+        sum([hl in train_graph.edges for hl in holdout_links])
+
+        holdout_nodes = [hl[0] for hl in holdout_links]
+        pairs = create_pairs_for_nodes(nodes=holdout_nodes, graph=train_graph)
+        scores = (
+            calculate_adamic_adar(graph=train_graph, pair_nodes=pairs)
+            .groupby("node_from")
+            .agg(lambda x: list(x))
+        )
+
+        recs = generate_recomendations(scores)
+
+        holdout_links_df = (
+            pd.DataFrame.from_records(
+                holdout_links, columns=["note_id", "notes_to", "p"]
+            )
+            .groupby("note_id")
+            .agg(lambda x: list(x))[["notes_to"]]
+        )
+
+        recall.append(recall_n(recs=recs, holdout_links=holdout_links_df, topn=topn))
+
+    return recall

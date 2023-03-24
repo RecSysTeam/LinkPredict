@@ -21,20 +21,20 @@ def extract_vault(path_voult_folder: Union[Path, str]) -> otools.Vault:
     return vault
 
 
-def delete_self_linking(graph: nx.Graph) -> nx.Graph:
-    """
-    delete all links of type A <-> A
-    (self linking is bad for calculation adamic adar index, because of 1 /  log(degree(w)))
-    """
+# def delete_self_linking(graph: nx.Graph) -> nx.Graph:
+#     """
+#     delete all links of type A <-> A
+#     (self linking is bad for calculation adamic adar index, because of 1 /  log(degree(w)))
+#     """
 
-    graph_new = deepcopy(graph)
-    edges = graph_new.edges
+#     graph_new = deepcopy(graph)
+#     edges = graph_new.edges
 
-    for edge in edges:
-        if edge[0] == edge[1]:
-            graph_new.remove_edge(edge)
+#     for edge in edges:
+#         if edge[0] == edge[1]:
+#             graph_new.remove_edge(edge)
 
-    return graph_new
+#     return graph_new
 
 
 def holdout(
