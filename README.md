@@ -25,3 +25,5 @@ For contributions
 ```sh
 pip install pre-commit
 ```
+
+All thing needed to reproduce the results you can find at files [Baseline.ipynb](https://github.com/RecSysTeam/LinkPredict/blob/main/Baseline.ipynb) and [bert_lightfm.ipynb](https://github.com/RecSysTeam/LinkPredict/blob/main/bert_lightfm.ipynb)
