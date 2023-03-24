@@ -3,10 +3,13 @@ from typing import Generator, Iterator, List, Tuple
 
 import networkx as nx
 import pandas as pd
+from tqdm import tqdm
 
 
 def create_pairs_for_nodes(
-    nodes: List[str], graph: nx.Graph
+    nodes: List[str],
+    graph: nx.Graph,
+    tqdm_disable: bool = True,
 ) -> List[Tuple["str", "str"]]:
     """
     create pairs of given nodes with each node of given graph
@@ -15,7 +18,7 @@ def create_pairs_for_nodes(
     result = []
     graph_nodes = list(graph.nodes)
 
-    for node in nodes:
+    for node in tqdm(nodes, disable=tqdm_disable):
         result = result + [(node, gn) for gn in graph_nodes if node != gn]
 
     return result
@@ -43,7 +46,8 @@ def generate_recomendations(
 
 
 def calculate_adamic_adar(
-    graph: nx.Graph, pair_nodes: List[Tuple[str, str]]
+    graph: nx.Graph,
+    pair_nodes: List[Tuple[str, str]],
 ) -> pd.DataFrame:
     graph_ = deepcopy(graph)
 

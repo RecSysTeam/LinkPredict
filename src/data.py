@@ -70,3 +70,28 @@ def holdout(
         modified_graph.remove_edge(*e[:2])
 
     return modified_graph, deleted_edges
+
+
+def delete_nodes_without_links(graph: nx.Graph) -> None:
+    """
+    Removing nodes with degree == 0 from nx graph
+    (inplace operation)
+    """
+    solitary = [n for n, d in graph.degree() if d == 0]
+    graph.remove_nodes_from(solitary)
+    print(f"deleted {len(solitary)} nodes from graph")
+
+
+# def delete_nan_nodes_from_graph(graph: nx.Graph, vault: otools.Vault)  -> None:
+#     '''
+#     based on file_exists remove node from graph or not
+#     '''
+#     df = vault.get_all_file_metadata()
+
+#     k = 0
+#     for file in df.index:
+#         if df['file_exists'][file] == False:
+#             graph.remove_node(file)
+#             k += 1
+
+#     print(f'removed {k} notes')
