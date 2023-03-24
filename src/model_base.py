@@ -66,7 +66,7 @@ def calculate_adamic_adar(
 def evaluate_baseline(graph: nx.Graph, n_exp: int = 1000, alpha=0.1, topn: int = 5):
 
     recall = []
-    for _ in tqdm(range(1000)):
+    for _ in tqdm(range(n_exp)):
         train_graph, holdout_links = holdout(graph, seed=None, alpha=0.1)
         sum([hl in train_graph.edges for hl in holdout_links])
 
