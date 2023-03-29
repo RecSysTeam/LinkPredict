@@ -31,6 +31,8 @@ All thing needed to reproduce the results you can find at files [Baseline.ipynb]
 
 ## Results
 
+https://github.com/RecSysTeam/LinkPredict/blob/main/rs_project_report.pdf
+
 ![res_1](https://github.com/RecSysTeam/LinkPredict/blob/main/assets/brain_res.png)
 
 ![res_2](https://github.com/RecSysTeam/LinkPredict/blob/main/assets/obsidian-hub_res.png)
